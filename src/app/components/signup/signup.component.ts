@@ -1,4 +1,3 @@
-// src/app/components/signup/signup.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -38,9 +37,12 @@ export class SignupComponent implements OnInit {
     private router: Router
   ) {
     this.signupForm = this.fb.group({
-      name: ['', Validators.required],
+      // Name must be at least 2 characters
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      // Email must be valid
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      // Password must be at least 6 characters
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

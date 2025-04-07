@@ -1,4 +1,3 @@
-<!-- src/app/components/signup/signup.component.html -->
 <div class="signup-container">
   <!-- Left panel with a gradient background and sign-up–oriented text -->
   <div class="left-panel">
@@ -20,8 +19,13 @@
             placeholder="Your full name"
             formControlName="name"
           />
+          <!-- Existing name required error -->
           <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
             Name is required
+          </mat-error>
+          <!-- New minLength error -->
+          <mat-error *ngIf="signupForm.get('name')?.hasError('minlength')">
+            Name must be at least 2 characters
           </mat-error>
         </mat-form-field>
 
@@ -52,6 +56,10 @@
           />
           <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
             Password is required
+          </mat-error>
+          <!-- New minLength error -->
+          <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters
           </mat-error>
         </mat-form-field>
 

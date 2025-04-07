@@ -1,4 +1,3 @@
-// src/app/components/login/login.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -37,9 +36,10 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router
   ) {
+    // Added Validators.minLength(6) for password (if desired)
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
