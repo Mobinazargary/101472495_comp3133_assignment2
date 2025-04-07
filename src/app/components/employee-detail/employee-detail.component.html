@@ -1,0 +1,51 @@
+<div class="employee-detail-page">
+  <!-- Hero Header Section -->
+  <div class="hero-header">
+    <h1 class="hero-title">Employee Details</h1>
+    <p class="hero-subtitle">Review the information below</p>
+  </div>
+
+  <!-- Centered Card Container -->
+  <div class="employee-detail-container">
+    <mat-card *ngIf="employee" class="employee-detail-card">
+      <mat-card-content>
+        <!-- Profile Picture at the Top -->
+        <div class="profile-section">
+          <img
+            *ngIf="employee.profilePicture"
+            [src]="employee.profilePicture"
+            alt="{{ employee.name }}'s Profile Picture"
+            class="profile-img"
+          />
+          <span *ngIf="!employee.profilePicture" class="no-image">
+            No Profile Picture
+          </span>
+        </div>
+        <!-- Name with Icon -->
+        <div class="name-section">
+          <h2 class="name-title">
+            <mat-icon class="detail-icon">person</mat-icon>
+            {{ employee.name }}
+          </h2>
+        </div>
+        <!-- Department & Position with Icons -->
+        <div class="info-section">
+          <p class="info-item">
+            <mat-icon class="detail-icon">business</mat-icon>
+            Department: <strong>{{ employee.department }}</strong>
+          </p>
+          <p class="info-item">
+            <mat-icon class="detail-icon">work</mat-icon>
+            Position: <strong>{{ employee.position }}</strong>
+          </p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-raised-button color="primary" routerLink="/employees" class="back-button">
+          <mat-icon>arrow_back</mat-icon>
+          Back to List
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="create-employee-page">
+  <!-- Hero Header Section -->
+  <div class="hero-header">
+    <h1 class="hero-title">Create Employee Record</h1>
+    <p class="hero-subtitle">Fill in the details below to add a new employee.</p>
+  </div>
+
+  <!-- Centered Card Container -->
+  <div class="create-employee-container">
+    <mat-card class="create-employee-card">
+      <mat-card-content>
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+          <!-- Name Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Employee Name" formControlName="name" />
+            <mat-error *ngIf="employeeForm.get('name')?.hasError('required')">
+              Name is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Department Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Department</mat-label>
+            <input matInput placeholder="Department" formControlName="department" />
+            <mat-error *ngIf="employeeForm.get('department')?.hasError('required')">
+              Department is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Position Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Position</mat-label>
+            <input matInput placeholder="Position" formControlName="position" />
+            <mat-error *ngIf="employeeForm.get('position')?.hasError('required')">
+              Position is required.
+            </mat-error>
+          </mat-form-field>
+
+
+
+          <!-- File Input -->
+          <div class="file-input-wrapper">
+            <label class="file-label">Profile Picture</label>
+            <input type="file" (change)="onFileSelected($event)" class="file-input" />
+            <div *ngIf="fileError" class="file-error">{{ fileError }}</div>
+          </div>
+
+          <!-- Submit Button -->
+          <button mat-raised-button color="primary" class="submit-button" type="submit">
+            Add Employee
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

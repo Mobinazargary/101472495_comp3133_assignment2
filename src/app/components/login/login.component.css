@@ -1,0 +1,142 @@
+/* Overall container: splits the screen into two panels */
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Left panel with gradient background */
+.left-panel {
+  flex: 1;
+  background: linear-gradient(135deg, #8CA6DB 0%, #B993D6 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.left-panel h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.left-panel p {
+  font-size: 1.1rem;
+  max-width: 300px;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+/* Right panel for the login form */
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfdfd; /* Off-white for contrast */
+  padding: 2rem;
+}
+
+/* Form wrapper with refined styling */
+.login-form-wrapper {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 2rem 3rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form-wrapper h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Material form fields styling */
+.custom-field {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+/* Remove default outline/shadow and add custom border */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  display: none !important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  display: none !important;
+}
+::ng-deep .mat-form-field-flex {
+  border: 1px solid #ccc !important;
+  border-radius: 6px;
+  background-color: #fafafa;
+  box-shadow: none !important;
+}
+::ng-deep .mat-form-field-flex:hover,
+::ng-deep .mat-form-field-flex.mat-focused {
+  box-shadow: none !important;
+  border-color: #aaa !important;
+}
+
+/* Fine-tune label and placeholder styles */
+::ng-deep .mat-form-field-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+::ng-deep .mat-input-element::placeholder {
+  color: #999;
+}
+
+/* Login button styling */
+.login-button {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-transform: none;
+  border-radius: 24px;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Switch authentication link */
+.switch-auth {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.switch-auth .link {
+  color: #3f51b5;
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+.switch-auth .link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    height: auto;
+  }
+  .login-form-wrapper {
+    margin: 2rem 0;
+  }
+}

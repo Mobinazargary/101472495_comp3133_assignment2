@@ -1,0 +1,134 @@
+/* Overall page background with the same purple-blue gradient */
+.create-employee-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ECE9F1 0%, #F7F7FC 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero header styling */
+.hero-header {
+  padding: 2.5rem 1rem 1rem;
+  text-align: center;
+  color: #4e3f98; /* Deep purple accent for text */
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.hero-subtitle {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #777;
+}
+
+/* Container for the Material card */
+.create-employee-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+/* Material card with a frosted glass effect */
+.create-employee-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Form field styling */
+.lux-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Overriding Angular Material's outline to use a subtle border */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+  display: none !important;
+}
+::ng-deep .mat-form-field-flex {
+  border: 2px solid #ddd !important;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+::ng-deep .mat-form-field-flex:hover,
+::ng-deep .mat-form-field-flex.mat-focused {
+  border-color: #bbb !important;
+}
+
+/* Image preview styling (optional) */
+.image-preview {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* File input styling */
+.file-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+.file-label {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+.file-input {
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* File error message styling */
+.file-error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  border-radius: 24px;
+  text-transform: none;
+  color: #fff !important;
+  background-color: #4e3f98 !important; /* Matching hero-title color */
+  box-shadow: 0 4px 12px rgba(78, 63, 152, 0.3);
+  transition: background-color 0.3s;
+}
+.submit-button:hover {
+  background-color: #3c3279 !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .create-employee-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,125 @@
+/* Full-page background with the same purple-blue gradient */
+.employee-detail-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ECE9F1 0%, #F7F7FC 100%);;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero header with bold title and subtitle */
+.hero-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  color: #4e3f98; /* Deep purple accent */
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.hero-subtitle {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+/* Center container for the card */
+.employee-detail-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+/* Frosted-glass Material card */
+.employee-detail-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Profile picture section */
+.profile-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.no-image {
+  display: inline-block;
+  margin-top: 2.5rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Name section styling */
+.name-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.name-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  color: #4e3f98;
+}
+
+/* Info section for department/position */
+.info-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.info-item {
+  font-size: 1rem;
+  color: #444;
+  margin: 0.5rem 0;
+}
+
+/* Icon styling */
+.detail-icon {
+  vertical-align: middle;
+  margin-right: 0.3rem;
+  font-size: 20px;
+}
+
+/* Card actions for back button */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.back-button {
+  text-transform: none;
+  border-radius: 24px;
+  font-size: 1rem;
+  padding: 0.6rem 2rem;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .employee-detail-card {
+    padding: 1.5rem;
+  }
+  .profile-img {
+    width: 90px;
+    height: 90px;
+  }
+  .name-title {
+    font-size: 1.6rem;
+  }
+}

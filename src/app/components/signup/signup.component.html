@@ -1,0 +1,73 @@
+<!-- src/app/components/signup/signup.component.html -->
+<div class="signup-container">
+  <!-- Left panel with a gradient background and sign-up–oriented text -->
+  <div class="left-panel">
+    <h1>Hello, Friend!</h1>
+    <p>Enter your details and start your journey with us</p>
+    <button mat-raised-button color="accent" routerLink="/login">I Already Have an Account</button>
+  </div>
+
+  <!-- Right panel with the signup form -->
+  <div class="right-panel">
+    <div class="signup-form-wrapper">
+      <h2>Create Your Account</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <!-- Name Field -->
+        <mat-form-field appearance="outline" class="custom-field">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            placeholder="Your full name"
+            formControlName="name"
+          />
+          <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email Field -->
+        <mat-form-field appearance="outline" class="custom-field">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Your email address"
+            formControlName="email"
+          />
+          <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password Field -->
+        <mat-form-field appearance="outline" class="custom-field">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Choose a secure password"
+            type="password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <button mat-raised-button color="primary" class="signup-button" type="submit">
+          Sign Up
+        </button>
+
+        <!-- Error Message -->
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </form>
+
+      <div class="switch-auth">
+        <span>Already have an account?</span>
+        <a routerLink="/login" class="link">Login</a>
+      </div>
+    </div>
+  </div>
+</div>

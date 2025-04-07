@@ -1,0 +1,154 @@
+/* src/app/components/signup/signup.component.css */
+
+/* Overall container: splits the screen into two panels */
+.signup-container {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Fill the entire viewport height */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Left panel with a gradient background */
+.left-panel {
+  flex: 1;
+  background: linear-gradient(135deg, #B993D6 0%, #8CA6DB 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.left-panel h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.left-panel p {
+  font-size: 1.1rem;
+  max-width: 300px;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+/* Right panel for the signup form */
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfdfd; /* Slightly off-white for contrast */
+  padding: 2rem;
+}
+
+/* Form wrapper with a more refined look */
+.signup-form-wrapper {
+  background: #fff;
+  border-radius: 10px;
+  /* Removed box shadow for a cleaner look:
+     If you want a subtle shadow, uncomment below
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  */
+  padding: 2rem 3rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signup-form-wrapper h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Material form fields */
+.custom-field {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+/* Remove the default outline and shadow.
+   We'll replace it with a simple border. */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  display: none !important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  display: none !important;
+}
+
+/* Instead, give the container a clean border */
+::ng-deep .mat-form-field-flex {
+  border: 1px solid #ccc !important;
+  border-radius: 6px;
+  background-color: #fafafa; /* Subtle background */
+  box-shadow: none !important;
+}
+
+/* Remove the default box shadow on hover/focus */
+::ng-deep .mat-form-field-flex:hover,
+::ng-deep .mat-form-field-flex.mat-focused {
+  box-shadow: none !important;
+  border-color: #aaa !important; /* Slightly darker border on focus */
+}
+
+/* Fine-tune label and placeholders */
+::ng-deep .mat-form-field-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+::ng-deep .mat-input-element::placeholder {
+  color: #999;
+}
+
+/* Sign Up button */
+.signup-button {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-transform: none;
+  border-radius: 24px; /* Rounded corners */
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Switch to login link */
+.switch-auth {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.switch-auth .link {
+  color: #3f51b5; /* Primary color for link */
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+.switch-auth .link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .signup-form-wrapper {
+    margin: 2rem 0;
+  }
+}

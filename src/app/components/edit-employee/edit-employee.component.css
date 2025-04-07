@@ -1,0 +1,130 @@
+/* Full-page background gradient */
+.update-employee-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ece9f1 0%, #f7f7fc 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero header with bold title and optional subtitle */
+.hero-header {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+}
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #4e3f98; /* Deep purple accent */
+}
+.hero-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin: 0.5rem 0 0;
+}
+
+/* Center the card container */
+.update-employee-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+/* Material card with a refined, frosted look */
+.update-employee-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Form field styling with minimal spacing */
+.lux-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Overriding Angular Material's outline to use a subtle border */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+  display: none !important;
+}
+::ng-deep .mat-form-field-flex {
+  border: 2px solid #ddd !important;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: border-color 0.3s;
+}
+::ng-deep .mat-form-field-flex:hover,
+::ng-deep .mat-form-field-flex.mat-focused {
+  border-color: #bbb !important;
+}
+
+/* Image preview styling */
+.image-preview {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* File input styling */
+.file-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+.file-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.file-input {
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* Submit button with a modern accent color */
+.submit-button {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  border-radius: 24px;
+  text-transform: none;
+  color: #fff !important;
+  background-color: #4e3f98 !important; /* Matching hero-title color */
+  box-shadow: 0 4px 12px rgba(78, 63, 152, 0.3);
+  transition: background-color 0.3s;
+}
+.submit-button:hover {
+  background-color: #3c3279 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .update-employee-card {
+    padding: 1.5rem;
+  }
+}
