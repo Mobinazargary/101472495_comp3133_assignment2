@@ -53,10 +53,21 @@ export class SignupComponent implements OnInit {
       this.authService.signup(this.signupForm.value).subscribe(
         res => {
           localStorage.setItem('token', res.token);
+          // Redirect to the Login page after successful signup
           this.router.navigate(['/login']);
         },
         err => {
-          this.errorMessage = 'Signup failed. Please try again.';
+          // Check if the error message indicates that the user already exists
+          if (
+            err &&
+            err.error &&
+            err.error.message &&
+            err.error.message.includes('User already exists')
+          ) {
+            this.errorMessage = 'User already exists.';
+          } else {
+            this.errorMessage = 'Signup failed. Please try again.';
+          }
         }
       );
     }
