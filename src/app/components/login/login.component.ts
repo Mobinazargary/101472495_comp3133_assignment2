@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router
   ) {
-    // Added Validators.minLength(6) for password (if desired)
+    // Password must be at least 6 characters
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/employees']);
         },
         err => {
+          // Set error message when login fails
           this.errorMessage = 'Invalid credentials';
         }
       );
