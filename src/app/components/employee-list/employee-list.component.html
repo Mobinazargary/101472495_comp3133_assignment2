@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="top-toolbar">
   <span class="toolbar-title">Employee Management</span>
   <span class="flex-fill"></span>
+  <!-- Updated route: use /employees/add if that’s your routing -->
   <button mat-button (click)="router.navigate(['/employee/add'])">Add Employee</button>
   <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>
@@ -10,9 +11,10 @@
   <div class="search-section">
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search Employees</mat-label>
+      <!-- Placeholder updated to "By department or designation" -->
       <input
         matInput
-        placeholder="By department or position"
+        placeholder="By department or designation"
         [(ngModel)]="searchQuery"
       />
     </mat-form-field>
@@ -31,7 +33,7 @@
           <td mat-cell *matCellDef="let employee">{{ employee.id }}</td>
         </ng-container>
 
-        <!-- Name + Profile Picture in the same column -->
+        <!-- Name + Profile Picture Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let employee">
@@ -42,7 +44,7 @@
                 alt="Profile"
                 class="profile-img"
               />
-              <span>{{ employee.name | nameFormat }}</span>
+              <span>{{ employee.first_name + ' ' + employee.last_name }}</span>
             </div>
           </td>
         </ng-container>
@@ -55,11 +57,11 @@
           </td>
         </ng-container>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef>Position</th>
+        <!-- Designation Column -->
+        <ng-container matColumnDef="designation">
+          <th mat-header-cell *matHeaderCellDef>Designation</th>
           <td mat-cell *matCellDef="let employee">
-            {{ employee.position }}
+            {{ employee.designation }}
           </td>
         </ng-container>
 
@@ -68,23 +70,20 @@
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let employee">
             <button mat-button color="primary" (click)="viewDetails(employee.id)">
-              <mat-icon>visibility</mat-icon>
-              View
+              <mat-icon>visibility</mat-icon> View
             </button>
             <button mat-button color="accent" (click)="editEmployee(employee.id)">
-              <mat-icon>edit</mat-icon>
-              Edit
+              <mat-icon>edit</mat-icon> Edit
             </button>
             <button mat-button color="warn" (click)="deleteEmployee(employee.id)">
-              <mat-icon>delete</mat-icon>
-              Delete
+              <mat-icon>delete</mat-icon> Delete
             </button>
           </td>
         </ng-container>
 
-        <!-- Row Definitions (no "profilePicture" column) -->
-        <tr mat-header-row *matHeaderRowDef="['id','name','department','position','actions']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['id','name','department','position','actions'];"></tr>
+        <!-- Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="['id','name','department','designation','actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id','name','department','designation','actions'];"></tr>
       </table>
     </mat-card-content>
   </mat-card>

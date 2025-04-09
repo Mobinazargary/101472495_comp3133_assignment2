@@ -10,30 +10,66 @@
     <mat-card class="update-employee-card">
       <mat-card-content>
         <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-          <!-- Name -->
+          <!-- First Name Field -->
           <mat-form-field appearance="outline" class="lux-field">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Employee Name" formControlName="name" />
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="first_name" />
           </mat-form-field>
 
-          <!-- Department -->
+          <!-- Last Name Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="last_name" />
+          </mat-form-field>
+
+          <!-- Email Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Email" formControlName="email" />
+          </mat-form-field>
+
+          <!-- Gender Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Designation Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Designation</mat-label>
+            <input matInput placeholder="Designation" formControlName="designation" />
+          </mat-form-field>
+
+          <!-- Salary Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Salary</mat-label>
+            <input matInput type="number" placeholder="Salary" formControlName="salary" />
+          </mat-form-field>
+
+          <!-- Date of Joining Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Date of Joining</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Select Date" formControlName="date_of_joining" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <!-- Department Field -->
           <mat-form-field appearance="outline" class="lux-field">
             <mat-label>Department</mat-label>
             <input matInput placeholder="Department" formControlName="department" />
           </mat-form-field>
 
-          <!-- Position -->
-          <mat-form-field appearance="outline" class="lux-field">
-            <mat-label>Position</mat-label>
-            <input matInput placeholder="Position" formControlName="position" />
-          </mat-form-field>
-
-          <!-- Image Preview -->
+          <!-- Image Preview Section -->
           <div class="image-preview" *ngIf="displayedImage">
             <img [src]="displayedImage" alt="Profile Picture" class="profile-img" />
           </div>
 
-          <!-- File Input -->
+          <!-- File Input for New Profile Picture -->
           <div class="file-input-wrapper">
             <label class="file-label">Profile Picture</label>
             <input type="file" (change)="onFileSelected($event)" class="file-input" />

@@ -1,12 +1,10 @@
-// src/app/components/employee-detail/employee-detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';  // Import MatIconModule
-
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-employee-detail',
@@ -16,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';  // Import MatIconModule
     RouterModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule  // Add MatIconModule here
+    MatIconModule
   ],
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.css']
@@ -24,7 +22,10 @@ import { MatIconModule } from '@angular/material/icon';  // Import MatIconModule
 export class EmployeeDetailComponent implements OnInit {
   employee: any;
 
-  constructor(private route: ActivatedRoute, private employeeService: EmployeeService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private employeeService: EmployeeService
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id') || '';

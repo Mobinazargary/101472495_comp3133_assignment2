@@ -14,21 +14,39 @@
           <img
             *ngIf="employee.profilePicture"
             [src]="employee.profilePicture"
-            alt="{{ employee.name }}'s Profile Picture"
+            alt="{{ employee.first_name }} {{ employee.last_name }}'s Profile Picture"
             class="profile-img"
           />
           <span *ngIf="!employee.profilePicture" class="no-image">
             No Profile Picture
           </span>
         </div>
-        <!-- Name with Icon -->
+
+        <!-- Full Name -->
         <div class="name-section">
           <h2 class="name-title">
             <mat-icon class="detail-icon">person</mat-icon>
-            {{ employee.name }}
+            {{ employee.first_name }} {{ employee.last_name }}
           </h2>
         </div>
-        <!-- Department & Position with Icons -->
+
+        <!-- Email -->
+        <div class="info-section">
+          <p class="info-item">
+            <mat-icon class="detail-icon">email</mat-icon>
+            Email: <strong>{{ employee.email }}</strong>
+          </p>
+        </div>
+
+        <!-- Gender -->
+        <div class="info-section">
+          <p class="info-item">
+            <mat-icon class="detail-icon">wc</mat-icon>
+            Gender: <strong>{{ employee.gender || 'N/A' }}</strong>
+          </p>
+        </div>
+
+        <!-- Department & Designation -->
         <div class="info-section">
           <p class="info-item">
             <mat-icon class="detail-icon">business</mat-icon>
@@ -36,7 +54,35 @@
           </p>
           <p class="info-item">
             <mat-icon class="detail-icon">work</mat-icon>
-            Position: <strong>{{ employee.position }}</strong>
+            Designation: <strong>{{ employee.designation }}</strong>
+          </p>
+        </div>
+
+        <!-- Salary -->
+        <div class="info-section">
+          <p class="info-item">
+            <mat-icon class="detail-icon">attach_money</mat-icon>
+            Salary: <strong>{{ employee.salary }}</strong>
+          </p>
+        </div>
+
+        <!-- Date of Joining -->
+        <div class="info-section">
+          <p class="info-item">
+            <mat-icon class="detail-icon">date_range</mat-icon>
+            Date of Joining: <strong>{{ employee.date_of_joining | date:'mediumDate' }}</strong>
+          </p>
+        </div>
+
+        <!-- Created & Updated Timestamps -->
+        <div class="info-section">
+          <p class="info-item">
+            <mat-icon class="detail-icon">schedule</mat-icon>
+            Created: <strong>{{ employee.created_at | date:'short' }}</strong>
+          </p>
+          <p class="info-item">
+            <mat-icon class="detail-icon">update</mat-icon>
+            Updated: <strong>{{ employee.updated_at | date:'short' }}</strong>
           </p>
         </div>
       </mat-card-content>

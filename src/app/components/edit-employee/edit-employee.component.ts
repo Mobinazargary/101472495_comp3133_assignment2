@@ -9,6 +9,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-edit-employee',
@@ -20,7 +23,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './edit-employee.component.html',
   styleUrls: ['./edit-employee.component.css']
@@ -37,11 +43,17 @@ export class EditEmployeeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+    // Initialize the form with updated fields from your model.
     this.employeeForm = this.fb.group({
-      name: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      gender: [''],
+      designation: ['', Validators.required],
+      salary: [null, [Validators.required, Validators.min(1000)]],
+      date_of_joining: ['', Validators.required],
       department: ['', Validators.required],
-      position: ['', Validators.required],
-      profilePicture: [null] // Holds existing or new image URL
+      profilePicture: [null]  // Holds existing or new image URL.
     });
   }
 
@@ -49,10 +61,21 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeId = this.route.snapshot.paramMap.get('id') || '';
     if (this.employeeId) {
       this.employeeService.getEmployeeById(this.employeeId).subscribe(employee => {
+        // Convert the backend date_of_joining string into a Date object.
+        let doj: Date = new Date(employee.date_of_joining);
+        // If the conversion is invalid, default to the current date.
+        if (isNaN(doj.getTime())) {
+          doj = new Date();
+        }
         this.employeeForm.patchValue({
-          name: employee.name,
+          first_name: employee.first_name,
+          last_name: employee.last_name,
+          email: employee.email,
+          gender: employee.gender,
+          designation: employee.designation,
+          salary: employee.salary,
+          date_of_joining: doj,
           department: employee.department,
-          position: employee.position,
           profilePicture: employee.profilePicture
         });
       });
@@ -63,7 +86,6 @@ export class EditEmployeeComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       this.selectedFile = event.target.files[0];
       if (this.selectedFile) {
-        // Optional: validate file type
         if (!this.selectedFile.type.startsWith('image/')) {
           console.error('Selected file is not an image.');
           this.selectedFile = null;
@@ -71,13 +93,12 @@ export class EditEmployeeComponent implements OnInit {
         }
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.previewUrl = e.target.result; // Set preview URL to show the new image
+          this.previewUrl = e.target.result; // Set preview URL for display.
         };
         reader.onerror = (error) => {
           console.error('Error reading file:', error);
         };
-        // Use non-null assertion operator to ensure TypeScript knows selectedFile is not null
-        reader.readAsDataURL(this.selectedFile!);
+        reader.readAsDataURL(this.selectedFile);
       }
     }
   }
@@ -85,21 +106,20 @@ export class EditEmployeeComponent implements OnInit {
   onSubmit(): void {
     if (this.employeeForm.valid && this.employeeId) {
       const employeeData = this.employeeForm.value;
-      // If a new file is selected, upload it first
       if (this.selectedFile) {
+        // Upload new file if selected.
         this.employeeService.uploadFile(this.selectedFile).subscribe({
           next: (res: any) => {
-            // Set the profilePicture field with the URL returned by the upload route
+            // Assume the backend returns the URL under res.fileUrl.
             employeeData.profilePicture = res.fileUrl || employeeData.profilePicture;
             this.updateEmployeeRecord(employeeData);
           },
           error: (err) => {
             console.error('File upload error:', err);
-            // Optionally display an error message to the user
           }
         });
       } else {
-        // No new file selected, so update employee with existing data
+        // No new file selected; update using existing data.
         this.updateEmployeeRecord(employeeData);
       }
     }
@@ -111,7 +131,7 @@ export class EditEmployeeComponent implements OnInit {
     });
   }
 
-  // Getter for the image to display: if a new file was selected, show its preview; otherwise, show the existing picture
+  // Getter to display the image: if a new file is selected, show its preview; otherwise, show the existing image.
   get displayedImage(): string | null {
     return this.previewUrl || this.employeeForm.value.profilePicture;
   }

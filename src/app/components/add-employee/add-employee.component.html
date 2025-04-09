@@ -2,7 +2,7 @@
   <!-- Hero Header Section -->
   <div class="hero-header">
     <h1 class="hero-title">Create Employee Record</h1>
-    <p class="hero-subtitle">Fill in the details below to add a new employee.</p>
+    <p class="hero-subtitle">Fill in the details to add a new employee.</p>
   </div>
 
   <!-- Centered Card Container -->
@@ -10,12 +10,75 @@
     <mat-card class="create-employee-card">
       <mat-card-content>
         <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-          <!-- Name Field -->
+          <!-- First Name Field -->
           <mat-form-field appearance="outline" class="lux-field">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Employee Name" formControlName="name" />
-            <mat-error *ngIf="employeeForm.get('name')?.hasError('required')">
-              Name is required.
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="first_name" />
+            <mat-error *ngIf="employeeForm.get('first_name')?.hasError('required')">
+              First Name is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Last Name Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="last_name" />
+            <mat-error *ngIf="employeeForm.get('last_name')?.hasError('required')">
+              Last Name is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Email Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Email" formControlName="email" />
+            <mat-error *ngIf="employeeForm.get('email')?.hasError('required')">
+              Email is required.
+            </mat-error>
+            <mat-error *ngIf="employeeForm.get('email')?.hasError('email')">
+              Please enter a valid email.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Gender Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Designation Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Designation</mat-label>
+            <input matInput placeholder="Designation" formControlName="designation" />
+            <mat-error *ngIf="employeeForm.get('designation')?.hasError('required')">
+              Designation is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Salary Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Salary</mat-label>
+            <input matInput type="number" placeholder="Salary" formControlName="salary" />
+            <mat-error *ngIf="employeeForm.get('salary')?.hasError('required')">
+              Salary is required.
+            </mat-error>
+            <mat-error *ngIf="employeeForm.get('salary')?.hasError('min')">
+              Salary must be at least 1000.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Date of Joining Field -->
+          <mat-form-field appearance="outline" class="lux-field">
+            <mat-label>Date of Joining</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Select Date" formControlName="date_of_joining" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="employeeForm.get('date_of_joining')?.hasError('required')">
+              Date of Joining is required.
             </mat-error>
           </mat-form-field>
 
@@ -28,18 +91,7 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Position Field -->
-          <mat-form-field appearance="outline" class="lux-field">
-            <mat-label>Position</mat-label>
-            <input matInput placeholder="Position" formControlName="position" />
-            <mat-error *ngIf="employeeForm.get('position')?.hasError('required')">
-              Position is required.
-            </mat-error>
-          </mat-form-field>
-
-
-
-          <!-- File Input -->
+          <!-- File Input for Profile Picture -->
           <div class="file-input-wrapper">
             <label class="file-label">Profile Picture</label>
             <input type="file" (change)="onFileSelected($event)" class="file-input" />
